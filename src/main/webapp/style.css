@@ -1,0 +1,29 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.bgcolor{
+	background: #48C9B0;
+	padding: 1vh;
+}
+.bgcolor_none{
+	background: white;
+	margin: 1vh;
+	
+}
+.width_{
+	width:95%;
+	margin-left: 2%;
+	margin-right:2%;
+}
+.space{
+	margin-top:3vh; 
+}
+img{
+	width: 101%;
+}
+.text-lg{
+	font-size: 1.5rem;
+}
