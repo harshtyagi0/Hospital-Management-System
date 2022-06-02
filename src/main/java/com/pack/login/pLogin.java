@@ -57,7 +57,7 @@ public class pLogin extends HttpServlet {
 
 		System.out.println("username: " + username);
 		System.out.println("password: " + password);
-		String sql="(select * from patient WHERE NAME =" +username+")";
+		String sql ="SELECT password FROM patient where name='"+username+"'";
 		Connection con;
 		PreparedStatement st;
 		try {
