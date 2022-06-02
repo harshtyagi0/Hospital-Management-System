@@ -70,16 +70,20 @@ input[type=submit] {
 			</tr>
 			<tr>
 				<th>Appointment Date :</th>
-				<td><input type="date" name=adate placeholder="2020/06/01">
+				<td><input type="text" name=adate placeholder="2020/06/01">
 				</td>
 			</tr>
 			<tr>
 				<th>Appointment Time :</th>
-				<td><input type="time" name=atime placeholder="00:00"></td>
+				<td><input type="text" name=atime placeholder="10:00"></td>
 			</tr>
 			
 			<tr>
 				<td colspan=2 align=center><input type=submit value=Book>
+				</td>
+			</tr>
+			<tr>
+				<td colspan=2 align=center style="color:red;">*Note:-Time is between 10:00Am- 06:00PM Only
 				</td>
 			</tr>
 		</table>

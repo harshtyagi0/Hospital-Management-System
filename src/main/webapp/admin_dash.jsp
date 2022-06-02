@@ -67,8 +67,8 @@ padding:1vh;
 	</div>
 	<section>
 		<div class="row">
-			<div class="col-md-3"></div>
-			<div class="col-md-9 bg_color">
+			<div class="col-md-2"></div>
+			<div class="col-md-10 bg_color">
 				<div class="row">
 					<div class="col-md-4">
 						<div class="container border border-dark" style="height: 33vh;">

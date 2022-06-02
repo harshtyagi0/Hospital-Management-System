@@ -56,22 +56,17 @@
 
 			<span style="color: blue;">Sign in to your Account</span>
 
-			<form action="aLogin" method="get">
-				<span class="font-weight-bold">User Name</span> <br> <input
-					type="text" class="form-control" id="inputUserName"
-					placeholder="UserName" name="UserName"><br> <span
-					class="font-weight-bold">Password</span><br> <input
-					type="password" class="form-control" id="inputPassword"
-					placeholder="Password" name="pwd"><br> <b> <font
-					color="red"> ${error}</font>
-				</b>
-				<button type="submit" class="btn btn-primary pull-right"
-					name="submit">
+			<form action="aLogin" method="post">
+				<span class="font-weight-bold">User Name</span> <br> 
+				<input type="text" class="form-control" id="inputUserName" placeholder="UserName" name="UserName"><br> 
+				<span class="font-weight-bold">Password</span><br> 
+				<input type="password" class="form-control" id="inputPassword" placeholder="Password" name="pwd"><br> <b> 
+				<font color="red"> ${error}</font></b>
+				<button type="submit" class="btn btn-primary pull-right" name="submit">
 					Login <i class="fa fa-arrow-circle-right"></i>
 				</button>
 			</form>
-			<br> <span class="footer">&#169; HOSPDBMS. All rights
-				reserved</span>
+			<br> <span class="footer">&#169; HOSPDBMS. All rights reserved</span>
 
 		</div>
 

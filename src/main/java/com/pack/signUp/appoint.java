@@ -61,26 +61,22 @@ public class appoint extends HttpServlet {
 			st.setString(2, request.getParameter("name"));
 			st.setString(3, request.getParameter("dname"));
 			st.setString(4, request.getParameter("specin"));
-			SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+//			SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
+////Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1); 
+//			String dateInString = request.getParameter("adate");
+//			Date date = formatter.parse(dateInString);
+			st.setString(5, request.getParameter("adate"));
 
-			String dateInString = request.getParameter("adate");
-			Date date = formatter.parse(dateInString);
-			st.setDate(5, (java.sql.Date) date);
-			String myTime = request.getParameter("atime"); 
-			Time time = new Time (Long.parseLong(myTime));
-			st.setTime(7, time);
-			
+			st.setString(6, request.getParameter("atime"));
+
 			int row = st.executeUpdate();
 			System.out.println(row + " row inserted");
-			PrintWriter out = response.getWriter();
-			out.print("Sucess" + row);
+			
+
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

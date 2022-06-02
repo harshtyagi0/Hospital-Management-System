@@ -44,7 +44,7 @@ public class dLogin extends HttpServlet {
 		// TODO Auto-generated method stub
 		String name = request.getParameter("UserName");
 		String pwd = request.getParameter("pwd");
-		String sql="(select * from doctor WHERE NAME =" +name+")";
+		String sql ="SELECT password FROM doctor where name='"+name+"'";
 		Connection con;
 		PreparedStatement st;
 		try {

@@ -44,7 +44,7 @@ public class aLogin extends HttpServlet {
 		// TODO Auto-generated method stub
 		String name = request.getParameter("UserName");
 		String pwd = request.getParameter("pwd");
-		String sql="(select * from admin WHERE aUserName =" +name+")";
+		String sql ="SELECT aPassword FROM admin where aUserName='"+name+"'";
 		Connection con;
 		PreparedStatement st;
 		try {
@@ -56,7 +56,7 @@ public class aLogin extends HttpServlet {
 		
 			String pwdd = null;
 			while (rs.next()) {
-				pwdd = rs.getString("apassword");
+				pwdd = rs.getString("aPassword");
 			}
 			if (pwd.equalsIgnoreCase(pwdd)) {
 				System.out.println("Login");
