@@ -5,42 +5,57 @@
 <head>
 <meta charset="UTF-8">
 <title>Appointment</title>
-<style>
-body {
-	background-image:url("bg5.jpg");
-	background-repeat:no-repeat;
-	background-size:cover;
-	font-family: arial;
-}
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-h1 {
-	color: rgb(196, 196, 196);
-	text-align: center;
-}
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-table {
-	background-color: white;
-	border-collapse: collapse;
-	border-radius: 10px;
-}
-
-td {
-	padding: 5px;
-	margin: 5px;
-}
-input,option,select{
-border-top:none;
-border-left: none;
-border-right: none;
-}
-input[type=submit] {
-	background-color: rgb(37, 117, 253);
-	color: white;
-	border-radius: 8px;
-	padding: 5px;
-	margin: 5px;
-	font-size: 15px;
-}
+	<style>
+	body {
+		background-image:url("bg5.jpg");
+		background-repeat:no-repeat;
+		background-size:cover;
+		font-family: arial;
+	}
+	
+	h1 {
+		color: rgb(196, 196, 196);
+		text-align: center;
+	}
+	
+	table {
+		background-color: white;
+		border-collapse: collapse;
+		border-radius: 10px;
+	}
+	
+	td {
+		padding: 5px;
+		margin: 5px;
+	}
+	input,option,select{
+		border-top:none;
+		border-left: none;
+		border-right: none;
+	}
+	
+	input[type=submit] {
+		background-color: rgb(37, 117, 253);
+		color: white;
+		border-radius: 8px;
+		padding: 5px;
+		margin: 5px;
+		font-size: 15px;
+	}
 </style>
 </head>
 <body>

@@ -62,6 +62,7 @@ body {
 						<td><b>Specialization</b></td>
 						<td><b>Appointment Date</b></td>
 						<td><b>Appointment Time</b></td>
+						
 					</tr>
 					<%
 					try {
@@ -78,21 +79,23 @@ body {
 						<td><%=resultSet.getString("spec")%></td>
 						<td><%=resultSet.getString("apdate")%></td>
 						<td><%=resultSet.getString("aptime")%></td>
-						<form action="Delete_up" method="post">
+						
+						
+
+					</tr>
+					<form action="Delete_up" method="post" style="float: right;">
 							<input type="text" , name="pId"
-								value=<%=resultSet.getInt("pId")%> style="display: none;">
-							<td><p>
-									<input class="btn btn-primary btn-lg active" aria-pressed="true" type="submit" value="Delete">
-								</p></td>
+								value=<%=resultSet.getInt("pId")%> style="display: none;"/>
+							<td>
+									<button class="btn btn-primary btn-lg active" aria-pressed="true" type="submit" value="Delete">Del</button>
+								</td>
 						</form>
 
 
 						<%
-						out.println("<td><p><a href=apointment.jsp?Pid=" + resultSet.getString("pId")
-								+ "><button class=\"btn btn-dark \"> Edit </button> </a>");
+						out.println("<td><p><a href=edit.jsp?pId=" + resultSet.getString("pId")
+								+ "><button class=\"btn btn-dark btn-lg active\" style=\" margin-top:1vw;\"> Edit </button> </a>");
 						%>
-
-					</tr>
 
 					<%
 					}

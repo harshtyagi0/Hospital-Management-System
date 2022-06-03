@@ -48,13 +48,15 @@ public class update_data extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String sql = "UPDATE apn_info SET apdate='"+request.getParameter("adate")+ "'"+"where pId='" + request.getParameter("pId") + "'";
+		String adate = request.getParameter("apdate");
+		String pid = request.getParameter("pId");
+		String sql = "update apn_info set apdate='" + adate + "' where pId='" + pid + "' ";
 		Connection con;
 		PreparedStatement st;
 		try {
 			con = DatabaseUtil.getConnection();
 			st = con.prepareStatement(sql);
-			st.execute(sql);
+			st.executeUpdate(sql);
 
 			PrintWriter out = response.getWriter();
 

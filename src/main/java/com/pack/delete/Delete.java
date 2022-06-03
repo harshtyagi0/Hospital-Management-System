@@ -51,17 +51,16 @@ public class Delete extends HttpServlet {
 			con = DatabaseUtil.getConnection();
 			st = con.prepareStatement(sql);
 			
-			ResultSet rs = st.executeQuery(sql);
-			String name = rs.getString("dname");
-			st.executeUpdate();
+			int rs = st.executeUpdate(sql);
 			
-			PrintWriter out = response.getWriter();
+//			PrintWriter out = response.getWriter();
+//			
+//			out.print("<html><body style=\"text-aling:center;\">");
+//			out.print("<h2>Deteled</h2>");
+//			out.print("</body></html>");
 			
-			out.print("<html><body style=\"text-aling:center;\">");
-			out.print("<h2>Deteled</h2>");
-			out.print("</body></html>");
-
-//			request.getRequestDispatcher("delete.jsp?name="+name).forward(request, response);
+			if(rs==1)
+			request.getRequestDispatcher("delete.jsp").forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
