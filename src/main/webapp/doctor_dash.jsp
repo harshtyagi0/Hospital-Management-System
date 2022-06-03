@@ -20,7 +20,9 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style type="text/css">
 body {
-	background: #85C1E9;
+	background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fdoctor-dashboard&psig=AOvVaw2D9BESZxUOevMWFp437SIr&ust=1654365221433000&source=images&cd=vfe&ved=2ahUKEwi-m4vs7JH4AhWWg2MGHdl_DjgQjRx6BAgAEAs");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .container-fluid h1 {
@@ -51,29 +53,7 @@ table, tr, td, th {
 </style>
 </head>
 <body>
-	<%@page import="java.sql.DriverManager"%>
-	<%@page import="java.sql.ResultSet"%>
-	<%@page import="java.sql.Statement"%>
-	<%@page import="java.sql.Connection"%>
-	<%
-	String id = request.getParameter("id");
-	String userID = null;
-	String driverName = "com.mysql.jdbc.Driver";
-	String connectionUrl = "jdbc:mysql://localhost:3306/";
-	String dbName = "hospital";
-	String userId = "root";
-	String password = "Black@white";
-
-	try {
-		Class.forName(driverName);
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-	}
-
-	Connection connection = null;
-	Statement statement = null;
-	ResultSet resultSet = null;
-	%>
+	<%@ include file="connectionDB.jsp"%>
 	<div class="container-fluid">
 		<h1>Doctor Dash</h1>
 		<div class="row">
@@ -86,8 +66,8 @@ table, tr, td, th {
 					<tr>
 						<%
 						try {
-							connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
-							statement = connection.createStatement();
+
+							statement = con.createStatement();
 							int dId = Integer.parseInt(request.getParameter("dId"));
 							String sql = "SELECT * FROM doctor where dId='" + dId + "'";
 							resultSet = statement.executeQuery(sql);
@@ -157,8 +137,8 @@ table, tr, td, th {
 					</tr>
 					<%
 					try {
-						connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
-						statement = connection.createStatement();
+
+						statement = con.createStatement();
 						String name = request.getParameter("name");
 						String sql = "SELECT * FROM apn_info where dname='" + name + "'";
 
@@ -166,6 +146,7 @@ table, tr, td, th {
 						while (resultSet.next()) {
 					%>
 					<tr bgcolor="#DEB887">
+
 						<td><%=resultSet.getString("pId")%></td>
 						<td><%=resultSet.getString("pname")%></td>
 						<td><%=resultSet.getString("dname")%></td>
@@ -179,14 +160,12 @@ table, tr, td, th {
 									<button type="submit">Delete</button>
 								</p></td>
 						</form>
-						<form action="update_data" method="post"></form>
-						<input type="text" , name="pId" value=<%=resultSet.getInt("pId")%>
-							style="display: none;">
-						<td><p>
 
-								<button type="submit">
-									Edit</a>
-							</p>
+
+						<%
+						out.println("<td><p><a href=edit.jsp?pId=" + resultSet.getString("pId") + "><button class=\"btn btn-dark \"> Edit </button> </a>");
+						%>
+
 					</tr>
 
 					<%

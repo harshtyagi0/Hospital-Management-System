@@ -46,29 +46,7 @@ body {
 </style>
 </head>
 <body>
-	<%@page import="java.sql.DriverManager"%>
-	<%@page import="java.sql.ResultSet"%>
-	<%@page import="java.sql.Statement"%>
-	<%@page import="java.sql.Connection"%>
-	<%
-	String id = request.getParameter("id");
-	String userID = null;
-	String driverName = "com.mysql.jdbc.Driver";
-	String connectionUrl = "jdbc:mysql://localhost:3306/";
-	String dbName = "hospital";
-	String userId = "root";
-	String password = "Black@white";
-
-	try {
-		Class.forName(driverName);
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-	}
-
-	Connection connection = null;
-	Statement statement = null;
-	ResultSet resultSet = null;
-	%>
+	<%@ include file="connectionDB.jsp"%>
 	<div class="container">
 		<h1>Doctors Detail</h1>
 		<div class="row">
@@ -89,8 +67,8 @@ body {
 					</tr>
 					<%
 					try {
-						connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
-						statement = connection.createStatement();
+						
+						statement = con.createStatement();
 						String sql = "SELECT * FROM doctor";
 						resultSet = statement.executeQuery(sql);
 						while (resultSet.next()) {

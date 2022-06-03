@@ -11,10 +11,7 @@
 	
 	<div>
 		<h1>Deleted</h1>
-		<%
-			String dname = request.getParameter("name");
-		%>
-	<!--  	<a href="doctor_dash.jsp?name="+dname+"">BAck</a> -->
+
 	</div>
 
 

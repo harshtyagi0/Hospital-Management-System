@@ -1,6 +1,7 @@
 package com.pack.delete;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -53,8 +54,14 @@ public class Delete extends HttpServlet {
 			ResultSet rs = st.executeQuery(sql);
 			String name = rs.getString("dname");
 			st.executeUpdate();
+			
+			PrintWriter out = response.getWriter();
+			
+			out.print("<html><body style=\"text-aling:center;\">");
+			out.print("<h2>Deteled</h2>");
+			out.print("</body></html>");
 
-			request.getRequestDispatcher("delete.jsp?name="+name).forward(request, response);
+//			request.getRequestDispatcher("delete.jsp?name="+name).forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

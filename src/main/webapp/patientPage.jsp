@@ -46,29 +46,7 @@ body {
 </style>
 </head>
 <body>
-	<%@page import="java.sql.DriverManager"%>
-	<%@page import="java.sql.ResultSet"%>
-	<%@page import="java.sql.Statement"%>
-	<%@page import="java.sql.Connection"%>
-	<%
-	String id = request.getParameter("id");
-	String userID = null;
-	String driverName = "com.mysql.jdbc.Driver";
-	String connectionUrl = "jdbc:mysql://localhost:3306/";
-	String dbName = "hospital";
-	String userId = "root";
-	String password = "Black@white";
-
-	try {
-		Class.forName(driverName);
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-	}
-
-	Connection connection = null;
-	Statement statement = null;
-	ResultSet resultSet = null;
-	%>
+	<%@ include file="connectionDB.jsp"%>
 	<div class="container">
 		<h1>Patient Dash</h1>
 		<div class="row">
@@ -89,8 +67,7 @@ body {
 					</tr>
 					<%
 					try {
-						connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
-						statement = connection.createStatement();
+						statement = con.createStatement();
 						int Pid = Integer.parseInt(request.getParameter("Pid"));
 						String sql = "SELECT * FROM patient where Pid='"+Pid+"'";
 						resultSet = statement.executeQuery(sql);
@@ -112,7 +89,10 @@ body {
 			</div>
 			<div class="col-md-4"></div>
 			<div class="col-md-4">
-			<div class="border border-dark rounded"> <h2>For appointment booking<br> <a href="apointment.jsp?Pid="+<%=resultSet.getString("Pid")%>+"">Click here </a></h2></div>
+			<div class="border border-dark rounded"> <h2>For appointment booking<br>
+			 
+			<%out.println("<td><p><a href=apointment.jsp?Pid=" + Pid + ">Click here </a>"); %></h2></div>
+			
 			</div>
 			<%
 					}

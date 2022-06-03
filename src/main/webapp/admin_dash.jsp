@@ -20,76 +20,69 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style type="text/css">
 body {
-	background: #85C1E9;
+	background-image:url("20511771.jpg");
+	background-repeat:no-repeat;
+	background-size:cover;
 	font-family: arial;
+	
 }
 
 .container h1 {
 	margin-top: 20vh;
 	text-align: center;
+	color: white;
+}
+section .container{
+ box-shadow: 5px 10px #222834 ;
+ height:35vh;
+  
+}
+.container span{
+font-size: 1.5rem;
+}
+.yl{
+color:yellow;
+}
+.rd{
+color:red;
 }
 
-.bg_color {
-	background: white;
-}
 div{
 padding:1vh;
 }
 </style>
 </head>
 <body>
-	<%@page import="java.sql.DriverManager"%>
-	<%@page import="java.sql.ResultSet"%>
-	<%@page import="java.sql.Statement"%>
-	<%@page import="java.sql.Connection"%>
-	<%
-	String id = request.getParameter("id");
-	String userID = null;
-	String driverName = "com.mysql.jdbc.Driver";
-	String connectionUrl = "jdbc:mysql://localhost:3306/";
-	String dbName = "hospital";
-	String userId = "root";
-	String password = "Black@white";
-
-	try {
-		Class.forName(driverName);
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-	}
-
-	Connection connection = null;
-	Statement statement = null;
-	ResultSet resultSet = null;
-	%>
+	<%@ include file="connectionDB.jsp"%>
 
 	<div class="container">
 		<h1>ADMIN | DASHBOARD</h1>
 	</div>
 	<section>
 		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-10 bg_color">
+			<div class="col-md-1"></div>
+			<div class="col-md-10 ">
 				<div class="row">
 					<div class="col-md-4">
-						<div class="container border border-dark" style="height: 33vh;">
+						<div class="container border border-dark">
 							<center>
 								<div class="icon"
 									style="background: #7FB3D5; width: 5rem; padding: 1vh; margin-top: 1vh;">
 									<i class="fa-regular fa-face-smile rounded"
 										style="font-size: 3rem; margin-top: 1vh; color: white;"></i>
 								</div>
-								<h1 style="margin-top: 0;">
+								<h1 style="margin-top: 0; color: white;" >
 									Manage <br>Patients
 								</h1>
 								<%
 								try {
-									connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
-									statement = connection.createStatement();
+									
+									statement = con.createStatement();
 									String sql = "SELECT Count(*) FROM patient";
 									resultSet = statement.executeQuery(sql);
 									while (resultSet.next()) {
 								%>
-								<span><a href="patients_details.jsp">Total patients:<%=resultSet.getString("Count(*)")%></a></span>
+								<span><a href="patients_details.jsp" class="yl">Total patients:<%=resultSet.getString("Count(*)")%></a></span>
 								<%
 								}
 								} catch (Exception e) {
@@ -100,7 +93,7 @@ padding:1vh;
 						</div>
 					</div>
 					<div class="col-md-4">
-						<div class="container border border-dark" style="height: 33vh;">
+						<div class="container border border-dark">
 							<center>
 								<div class="icon"
 									style="background: #7FB3D5; width: 5rem; padding: 1vh; margin-top: 1vh;">
@@ -112,13 +105,13 @@ padding:1vh;
 								</h1>
 								<%
 								try {
-									connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
-									statement = connection.createStatement();
+								
+									statement = con.createStatement();
 									String sql = "SELECT Count(*) FROM doctor";
 									resultSet = statement.executeQuery(sql);
 									while (resultSet.next()) {
 								%>
-								<span><a href="doctor_details.jsp">Total Doctors:<%=resultSet.getString("Count(*)")%></a></span>
+								<span><a href="doctor_details.jsp" class="yl">Total Doctors:<%=resultSet.getString("Count(*)")%></a></span>
 								<%
 								}
 								} catch (Exception e) {
@@ -129,7 +122,7 @@ padding:1vh;
 						</div>
 					</div>
 					<div class="col-md-4">
-						<div class="container border border-dark" style="height: 33vh;">
+						<div class="container border border-dark">
 							<center>
 								<div class="icon"
 									style="background: #7FB3D5; width: 5rem; padding: 1vh; margin-top: 1vh;">
@@ -139,13 +132,13 @@ padding:1vh;
 								<h1 style="margin-top: 0;">Appointments</h1>
 								<%
 								try {
-									connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
-									statement = connection.createStatement();
+									
+									statement = con.createStatement();
 									String sql = "SELECT Count(*) FROM apn_info";
 									resultSet = statement.executeQuery(sql);
 									while (resultSet.next()) {
 								%>
-								<span><a href="apoint_details.jsp">Total patients:<%=resultSet.getString("Count(*)")%></a></span>
+								<span><a href="apoint_details.jsp" class="rd">Total patients:<%=resultSet.getString("Count(*)")%></a></span>
 								<%
 								}
 								} catch (Exception e) {

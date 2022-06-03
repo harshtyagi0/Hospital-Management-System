@@ -46,29 +46,7 @@ body {
 </style>
 </head>
 <body>
-	<%@page import="java.sql.DriverManager"%>
-	<%@page import="java.sql.ResultSet"%>
-	<%@page import="java.sql.Statement"%>
-	<%@page import="java.sql.Connection"%>
-	<%
-	String id = request.getParameter("id");
-	String userID = null;
-	String driverName = "com.mysql.jdbc.Driver";
-	String connectionUrl = "jdbc:mysql://localhost:3306/";
-	String dbName = "hospital";
-	String userId = "root";
-	String password = "Black@white";
-
-	try {
-		Class.forName(driverName);
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-	}
-
-	Connection connection = null;
-	Statement statement = null;
-	ResultSet resultSet = null;
-	%>
+	<%@ include file="connectionDB.jsp"%>
 	<div class="container">
 		<h1>Appointment Details</h1>
 		<div class="row">
@@ -87,8 +65,8 @@ body {
 					</tr>
 					<%
 					try {
-						connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
-						statement = connection.createStatement();
+
+						statement = con.createStatement();
 						String sql = "SELECT * FROM apn_info";
 						resultSet = statement.executeQuery(sql);
 						while (resultSet.next()) {
@@ -100,6 +78,20 @@ body {
 						<td><%=resultSet.getString("spec")%></td>
 						<td><%=resultSet.getString("apdate")%></td>
 						<td><%=resultSet.getString("aptime")%></td>
+						<form action="Delete_up" method="post">
+							<input type="text" , name="pId"
+								value=<%=resultSet.getInt("pId")%> style="display: none;">
+							<td><p>
+									<input class="btn btn-primary btn-lg active" aria-pressed="true" type="submit" value="Delete">
+								</p></td>
+						</form>
+
+
+						<%
+						out.println("<td><p><a href=apointment.jsp?Pid=" + resultSet.getString("pId")
+								+ "><button class=\"btn btn-dark \"> Edit </button> </a>");
+						%>
+
 					</tr>
 
 					<%
