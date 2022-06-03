@@ -43,6 +43,11 @@ body {
 .bg_color button {
 	margin-left: 69%;
 }
+
+table, tr, td, th {
+	background: transparent;
+	border: 2px double black;
+}
 </style>
 </head>
 <body>
@@ -73,38 +78,56 @@ body {
 		<h1>Doctor Dash</h1>
 		<div class="row">
 			<div class="col-md-4">
-				<table align="center" cellpadding="5" cellspacing="5" border="1">
+				<table align="center" cellpadding="5" cellspacing="5">
+					<tr aling="center">
+						<th colspan=2 aling="center" style="padding-left: 10vh;">Doctor
+							Details</th>
+					</tr>
 					<tr>
+						<%
+						try {
+							connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
+							statement = connection.createStatement();
+							int dId = Integer.parseInt(request.getParameter("dId"));
+							String sql = "SELECT * FROM doctor where dId='" + dId + "'";
+							resultSet = statement.executeQuery(sql);
+							while (resultSet.next()) {
+						%>
 
 					</tr>
-					<tr bgcolor="#A52A2A">
+					<tr class="border border-dark">
 						<td><b>ID</b></td>
-						<td><b>Name</b></td>
-						<td><b>Age</b></td>
-						<td><b>Gender</b></td>
-						<td><b>Phone</b></td>
-						<td><b>Address</b></td>
-						<td><b>specialization</b></td>
-						<td><b>other specialization</b></td>
-					</tr>
-					<%
-					try {
-						connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
-						statement = connection.createStatement();
-						int dId = Integer.parseInt(request.getParameter("dId"));
-						String sql = "SELECT * FROM doctor where dId='"+dId+"'";
-						resultSet = statement.executeQuery(sql);
-						while (resultSet.next()) {
-					%>
-					<tr bgcolor="#DEB887">
 						<td><%=resultSet.getString("did")%></td>
+					</tr>
+					<tr>
+						<td><b>Name</b></td>
 						<td><%=resultSet.getString("name")%></td>
+					</tr>
+					<tr>
+						<td><b>Age</b></td>
 						<td><%=resultSet.getString("age")%></td>
+					</tr>
+					<tr>
+						<td><b>Gender</b></td>
 						<td><%=resultSet.getString("gender")%></td>
+					</tr>
+					<tr>
+						<td><b>Phone</b></td>
 						<td><%=resultSet.getString("phone")%></td>
+					</tr>
+					<tr>
+						<td><b>Address</b></td>
 						<td><%=resultSet.getString("address")%></td>
+					</tr>
+					<tr>
+						<td><b>specialization</b></td>
+
 						<td><%=resultSet.getString("specialIn")%></td>
+					</tr>
+					<tr>
+						<td><b>other specialization</b></td>
 						<td><%=resultSet.getString("otherSpec")%></td>
+
 					</tr>
 
 					<%
@@ -117,25 +140,28 @@ body {
 			</div>
 			<div class="col-md-2"></div>
 			<div class="col-md-4">
-				<table align="center" cellpadding="5" cellspacing="5" border="1">
+				<table align="center" cellpadding="5" cellspacing="5">
 					<tr>
 
 					</tr>
-					<tr bgcolor="#A52A2A">
+					<tr>
 						<td><b>PID</b></td>
 						<td><b>Patient Name</b></td>
 						<td><b>Doctor Name</b></td>
 						<td><b>Specialization</b></td>
 						<td><b>Appointment Date</b></td>
 						<td><b>Appointment Time</b></td>
+						<td><b>Delete</b></td>
+						<td><b>Edit</b></td>
+
 					</tr>
 					<%
 					try {
 						connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
 						statement = connection.createStatement();
 						String name = request.getParameter("name");
-						String sql = "SELECT * FROM apn_info where dname='"+name+"'";
-						
+						String sql = "SELECT * FROM apn_info where dname='" + name + "'";
+
 						resultSet = statement.executeQuery(sql);
 						while (resultSet.next()) {
 					%>
@@ -146,6 +172,21 @@ body {
 						<td><%=resultSet.getString("spec")%></td>
 						<td><%=resultSet.getString("apdate")%></td>
 						<td><%=resultSet.getString("aptime")%></td>
+						<form action="Delete_up" method="post">
+							<input type="text" , name="pId"
+								value=<%=resultSet.getInt("pId")%> style="display: none;">
+							<td><p>
+									<button type="submit">Delete</button>
+								</p></td>
+						</form>
+						<form action="update_data" method="post"></form>
+						<input type="text" , name="pId" value=<%=resultSet.getInt("pId")%>
+							style="display: none;">
+						<td><p>
+
+								<button type="submit">
+									Edit</a>
+							</p>
 					</tr>
 
 					<%
@@ -156,7 +197,7 @@ body {
 					%>
 				</table>
 			</div>
-			
+
 		</div>
 
 	</div>

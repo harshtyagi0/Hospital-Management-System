@@ -38,18 +38,59 @@ input[type=submit] {
 </style>
 </head>
 <body>
+<%@page import="java.sql.DriverManager"%>
+	<%@page import="java.sql.ResultSet"%>
+	<%@page import="java.sql.Statement"%>
+	<%@page import="java.sql.Connection"%>
+	<%
+	String id = request.getParameter("id");
+	String userID = null;
+	String driverName = "com.mysql.jdbc.Driver";
+	String connectionUrl = "jdbc:mysql://localhost:3306/";
+	String dbName = "hospital";
+	String userId = "root";
+	String password = "Black@white";
+
+	try {
+		Class.forName(driverName);
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	}
+
+	Connection connection = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	%>
 	<h1>Patient SignIn</h1>
 	<form action="appoint" method="post">
 		<table align=center>
 			<tr>
+			<%
+					try {
+						connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
+						statement = connection.createStatement();
+						int Pid = Integer.parseInt(request.getParameter("Pid"));
+						String sql = "SELECT * FROM patient where Pid='"+Pid+"'";
+						resultSet = statement.executeQuery(sql);
+						while (resultSet.next()) {
+					%>
 				<th>Patient Name</th>
-				<td><input type=text name=name placeholder="patient name">
+				<td><input type=text name=name readonly class="form-control-plaintext" id="staticEmail" value=<%=resultSet.getString("name")%>>
 				</td>
 			</tr>
 			<tr>
 				<th>Patient Id</th>
-				<td><input type=text name=pid placeholder="patient Id">
+				
+				 <!--  <input type="text" readonly class="form-control-plaintext" id="staticEmail" name=pid value="email@example.com"> -->
+				<td><input type=text readonly class="form-control-plaintext" id="staticEmail" name=pid value=<%=resultSet.getString("pid")%>>
+				
 				</td>
+					<%
+					}
+					} catch (Exception e) {
+					e.printStackTrace();
+					}
+					%>
 			</tr>
 			<tr>
 				<th>Doctor Name</th>

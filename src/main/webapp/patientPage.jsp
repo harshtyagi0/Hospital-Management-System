@@ -107,18 +107,19 @@ body {
 						<td><%=resultSet.getString("specIssue")%></td>
 					</tr>
 
-					<%
+					
+				</table>
+			</div>
+			<div class="col-md-4"></div>
+			<div class="col-md-4">
+			<div class="border border-dark rounded"> <h2>For appointment booking<br> <a href="apointment.jsp?Pid="+<%=resultSet.getString("Pid")%>+"">Click here </a></h2></div>
+			</div>
+			<%
 					}
 					} catch (Exception e) {
 					e.printStackTrace();
 					}
 					%>
-				</table>
-			</div>
-			<div class="col-md-4"></div>
-			<div class="col-md-4">
-			<div class="border border-dark rounded"> <h2>For appointment booking<br> <a href="apointment.jsp">Click here </a></h2></div>
-			</div>
 		</div>
 
 	</div>
