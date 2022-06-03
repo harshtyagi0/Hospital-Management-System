@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin Login</title>
+<title>Doctor Login</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script
@@ -20,7 +20,9 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<style type="text/css">
 		body {
-			background: #85C1E9;
+			background-image:url("dr.png");
+			background-repeat:no-repeat;
+			background-size:cover;
 			font-family: arial;
 		}
 		
@@ -30,15 +32,13 @@
 			
 		}
 		
-		.bg_color {
-			background: white;
-		}
+		
 		
 		.wd {
 			width: 25%;
 		}
 		
-		.bg_color button {
+		button {
 			margin-left: 69%;
 		}
 	</style>
@@ -47,7 +47,7 @@
 
 	<div class="container mx-auto ">
 		<h1>HopsDBMS|<br>Doc Login</h1>
-		<div class="mx-auto wd bg_color ">
+		<div class="mx-auto wd">
 			<form action="dLogin" method="post">
 				<span class="font-weight-bold">User Name</span><br> 
 				<input type="text" class="form-control" id="inputUserName"

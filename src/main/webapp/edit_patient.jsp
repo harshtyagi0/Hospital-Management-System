@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Edit</title>
+<title>Edit Patient</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script
@@ -33,29 +33,29 @@
 <body>
 	<%@ include file="connectionDB.jsp"%>
 	<div></div>
-	<form action="update_data" method="post">
+	<form action="updatepatient" method="post">
 		<div class="form-group row">
 		<div class="col-md-3"></div>
 			<%
 			try {
 
 				statement = con.createStatement();
-				int pId = Integer.parseInt(request.getParameter("pId"));
-				String sql = "SELECT * FROM apn_info where pId='" + pId + "'";
+				int Pid = Integer.parseInt(request.getParameter("Pid"));
+				String sql = "SELECT * FROM patient where Pid='" + Pid + "'";
 				resultSet = statement.executeQuery(sql);
 				while (resultSet.next()) {
 			%>
 			<label for="staticEmail" class="col-sm-2 col-form-label">ID</label>
 			<div class="col-sm-5">
 				<input type="text" readonly class="form-control-plaintext"
-					id="staticEmail" name=pId value=<%=resultSet.getString("pId")%>>
+					id="staticEmail" name=Pid value=<%=resultSet.getString("Pid")%>>
 			</div>
 		</div>
 		<div class="form-group row">
 		<div class="col-md-3"></div>
-			<label for="inputPassword" class="col-sm-2 col-form-label">Date</label>
+			<label for="inputPassword" class="col-sm-2 col-form-label">Phone</label>
 			<div class="col-sm-5">
-				<input type="date" class="form-control" name=apdate placeholder="2020/06/01">
+				<input type="Number" class="form-control" name=phone placeholder="9876543210">
 			<br>
 			<input type="submit" value="Submit" class="btn btn-dark">
 			</div>

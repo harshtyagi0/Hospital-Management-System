@@ -57,7 +57,7 @@ public class DoctorSign extends HttpServlet {
 
 			st.setString(3, request.getParameter("gender"));
 
-			st.setLong(4,Long.parseLong(request.getParameter("phone")));
+			st.setString(4,request.getParameter("phone"));
 			st.setString(5, request.getParameter("address"));
 			st.setString(6, request.getParameter("pass"));
 			st.setString(7, request.getParameter("specin"));

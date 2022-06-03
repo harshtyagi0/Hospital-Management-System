@@ -20,9 +20,10 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style type="text/css">
 body {
-	background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fdoctor-dashboard&psig=AOvVaw2D9BESZxUOevMWFp437SIr&ust=1654365221433000&source=images&cd=vfe&ved=2ahUKEwi-m4vs7JH4AhWWg2MGHdl_DjgQjRx6BAgAEAs");
-	background-size: cover;
+	background-image: url("bg7.jpg");
 	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: arial;
 }
 
 .container-fluid h1 {

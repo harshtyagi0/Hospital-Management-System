@@ -20,29 +20,25 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style type="text/css">
 body {
-	background: #85C1E9;
+	background-image: url("bg10.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: arial;
 }
 
 .container h1 {
 	margin-top: 5vh;
 }
 
-.container h1, .footer {
+.container h1{
 	text-align: center;
 }
-
-.bg_color {
-	background: white;
+.col-md-4 table{
+color:white;
 }
 
-.wd {
-	width: 33%;
-	padding: 3%;
-}
 
-.bg_color button {
-	margin-left: 69%;
-}
+
 </style>
 </head>
 <body>
@@ -55,7 +51,7 @@ body {
 					<tr>
 
 					</tr>
-					<tr bgcolor="#A52A2A">
+					<tr>
 						<td><b>ID</b></td>
 						<td><b>Name</b></td>
 						<td><b>Age</b></td>
@@ -73,7 +69,7 @@ body {
 						resultSet = statement.executeQuery(sql);
 						while (resultSet.next()) {
 					%>
-					<tr bgcolor="#DEB887">
+					<tr>
 						<td><%=resultSet.getString("Pid")%></td>
 						<td><%=resultSet.getString("name")%></td>
 						<td><%=resultSet.getString("age")%></td>

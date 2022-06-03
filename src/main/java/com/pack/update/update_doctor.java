@@ -1,10 +1,8 @@
-package com.pack.delete;
+package com.pack.update;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -16,16 +14,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.crud.util.DatabaseUtil;
 
 /**
- * Servlet implementation class Delete
+ * Servlet implementation class update_doctor
  */
-@WebServlet("/Delete_up")
-public class Delete extends HttpServlet {
+@WebServlet("/updatedoctor")
+public class update_doctor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Delete() {
+	public update_doctor() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,22 +45,23 @@ public class Delete extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String sql = "DELETE FROM apn_info where pId='" + request.getParameter("pId") + "'";
-		String s = "SELETE * FROM apn_info where pId='" + request.getParameter("pId") + "'";
+		String phone = request.getParameter("phone");
+		String dId = request.getParameter("dId");
+		String sql = "update doctor set phone='" + phone + "' where dId='" + dId + "' ";
 		Connection con;
 		PreparedStatement st;
 		try {
 			con = DatabaseUtil.getConnection();
 			st = con.prepareStatement(sql);
+			st.executeUpdate(sql);
 
-			int rs = st.executeUpdate(sql);
+			request.getRequestDispatcher("update.jsp").forward(request, response);
 
-			if (rs == 1)
-				request.getRequestDispatcher("delete.jsp").forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
 }

@@ -20,64 +20,34 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style type="text/css">
 body {
-	background: #85C1E9;
+	background-image: url("20356368.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: arial;
 }
 
 .container h1 {
 	margin-top: 5vh;
 }
 
-.container h1, .footer {
+.container h1 {
 	text-align: center;
 }
 
-.bg_color {
-	background: white;
-}
 
-.wd {
-	width: 33%;
-	padding: 3%;
-}
-
-.bg_color button {
-	margin-left: 69%;
-}
 </style>
 </head>
 <body>
-	<%@page import="java.sql.DriverManager"%>
-	<%@page import="java.sql.ResultSet"%>
-	<%@page import="java.sql.Statement"%>
-	<%@page import="java.sql.Connection"%>
-	<%
-	String id = request.getParameter("id");
-	String userID = null;
-	String driverName = "com.mysql.jdbc.Driver";
-	String connectionUrl = "jdbc:mysql://localhost:3306/";
-	String dbName = "hospital";
-	String userId = "root";
-	String password = "Black@white";
-
-	try {
-		Class.forName(driverName);
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-	}
-
-	Connection connection = null;
-	Statement statement = null;
-	ResultSet resultSet = null;
-	%>
+	<%@ include file="connectionDB.jsp"%>
 	<div class="container">
 		<h1>Patient Details</h1>
 		<div class="row">
 			<div class="col-md-4">
-				<table align="center" cellpadding="5" cellspacing="5" border="1">
+				<table align="center" cellpadding="5" cellspacing="5" >
 					<tr>
 
 					</tr>
-					<tr bgcolor="#A52A2A">
+					<tr>
 						<td><b>ID</b></td>
 						<td><b>Name</b></td>
 						<td><b>Age</b></td>
@@ -89,13 +59,13 @@ body {
 					</tr>
 					<%
 					try {
-						connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
-						statement = connection.createStatement();
+						
+						statement = con.createStatement();
 						String sql = "SELECT * FROM patient";
 						resultSet = statement.executeQuery(sql);
 						while (resultSet.next()) {
 					%>
-					<tr bgcolor="#DEB887">
+					<tr>
 						<td><%=resultSet.getString("Pid")%></td>
 						<td><%=resultSet.getString("name")%></td>
 						<td><%=resultSet.getString("age")%></td>
@@ -105,6 +75,20 @@ body {
 						<td><%=resultSet.getString("issue")%></td>
 						<td><%=resultSet.getString("specIssue")%></td>
 					</tr>
+					
+					<form action="delete_patient" method="post" style="float: right;">
+							<input type="text" , name="Pid"
+								value=<%=resultSet.getInt("Pid")%> style="display: none;"/>
+							<td>
+									<button class="btn btn-primary btn-lg active" aria-pressed="true" type="submit" value="Delete">Del</button>
+								</td>
+						</form>
+
+
+						<%
+						out.println("<td><p><a href=edit_patient.jsp?Pid=" + resultSet.getString("Pid")
+								+ "><button class=\"btn btn-dark btn-lg active\" style=\" margin-top:1vw;\"> Edit </button> </a>");
+						%>
 
 					<%
 					}

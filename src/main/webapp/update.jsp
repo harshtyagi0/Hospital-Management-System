@@ -36,7 +36,7 @@
 </head>
 <body>
 	<div>
-		<h1>Deleted</h1>
+		<h1>Updated</h1>
 
 	</div>
 

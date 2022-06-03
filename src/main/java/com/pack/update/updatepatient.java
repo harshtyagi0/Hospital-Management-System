@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,40 +14,36 @@ import javax.servlet.http.HttpServletResponse;
 import com.crud.util.DatabaseUtil;
 
 /**
- * Servlet implementation class update_data
+ * Servlet implementation class updatepatient
  */
-@WebServlet("/update_data")
-public class update_data extends HttpServlet {
+@WebServlet("/updatepatient")
+public class updatepatient extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public updatepatient() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public update_data() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String adate = request.getParameter("apdate");
-		String pid = request.getParameter("pId");
-		String sql = "update apn_info set apdate='" + adate + "' where pId='" + pid + "' ";
+		String phone = request.getParameter("phone");
+		String Pid = request.getParameter("Pid");
+		String sql = "update patient set phone='" + phone + "' where Pid='" + Pid + "' ";
 		Connection con;
 		PreparedStatement st;
 		try {

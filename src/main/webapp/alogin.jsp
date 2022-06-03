@@ -20,7 +20,9 @@
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<style type="text/css">
 	body {
-		background: #85C1E9;
+		background-image: url("bg8.jpeg");
+		background-size: cover;
+		background-repeat: no-repeat;
 	}
 	
 	.container h1 {

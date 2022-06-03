@@ -5,9 +5,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+	integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style type="text/css">
 body {
-	background: #85C1E9;
+	background-image: url("bg4.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 	font-family: arial;
 }
 
@@ -17,7 +33,7 @@ h1 {
 }
 
 table {
-	background-color: white;
+	
 	border-collapse: collapse;
 	border-radius: 10px;
 }
@@ -25,6 +41,12 @@ table {
 td {
 	padding: 5px;
 	margin: 5px;
+}
+
+input, option, select {
+	border-top: none;
+	border-left: none;
+	border-right: none;
 }
 
 input[type=submit] {
@@ -39,6 +61,8 @@ input[type=submit] {
 </head>
 <body>
 	<h1>Patient SignIn</h1>
+	
+	<center>
 	<form action="PatientSign" method="post">
 		<table align=center>
 			<tr>
@@ -69,7 +93,7 @@ input[type=submit] {
 			</tr>
 			<tr>
 				<th>Address :</th>
-				<td><input type=text name=address placeholder="Raipur"></td>
+				<td><input type=text name=address placeholder="Dehradun"></td>
 			</tr>
 			<tr>
 
@@ -107,5 +131,7 @@ input[type=submit] {
 			</tr>
 		</table>
 	</form>
+	</center>
+
 </body>
 </html>

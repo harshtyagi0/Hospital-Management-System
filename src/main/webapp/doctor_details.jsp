@@ -20,11 +20,14 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style type="text/css">
 body {
-	background: #85C1E9;
+	background-image: url("bg2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
-.container h1 {
+.container h1,table {
 	margin-top: 5vh;
+	align-items: center;
 }
 
 .container h1, .footer {
@@ -50,12 +53,13 @@ body {
 	<div class="container">
 		<h1>Doctors Detail</h1>
 		<div class="row">
+		<div class="col-md-2"></div>
 			<div class="col-md-4">
 				<table align="center" cellpadding="5" cellspacing="5" border="1">
 					<tr>
 
 					</tr>
-					<tr bgcolor="#A52A2A">
+					<tr>
 						<td><b>ID</b></td>
 						<td><b>Name</b></td>
 						<td><b>Age</b></td>
@@ -73,8 +77,8 @@ body {
 						resultSet = statement.executeQuery(sql);
 						while (resultSet.next()) {
 					%>
-					<tr bgcolor="#DEB887">
-						<td><%=resultSet.getString("did")%></td>
+					<tr style="color: orangered;">
+						<td><%=resultSet.getString("dId")%></td>
 						<td><%=resultSet.getString("name")%></td>
 						<td><%=resultSet.getString("age")%></td>
 						<td><%=resultSet.getString("gender")%></td>
@@ -82,7 +86,22 @@ body {
 						<td><%=resultSet.getString("address")%></td>
 						<td><%=resultSet.getString("specialIn")%></td>
 						<td><%=resultSet.getString("otherSpec")%></td>
+						
+						
 					</tr>
+					<form action="delete_doctor" method="post" style="float: right;">
+							<input type="text" , name="dId"
+								value=<%=resultSet.getInt("dId")%> style="display: none;"/>
+							<td>
+									<button class="btn btn-primary btn-lg active" aria-pressed="true" type="submit" value="Delete">Del</button>
+								</td>
+						</form>
+
+
+						<%
+						out.println("<td><p><a href=edit_doc.jsp?dId=" + resultSet.getString("dId")
+								+ "><button class=\"btn btn-dark btn-lg active\" style=\" margin-top:1vw;\"> Edit </button> </a>");
+						%>
 
 					<%
 					}
@@ -92,7 +111,7 @@ body {
 					%>
 				</table>
 			</div>
-			<div class="col-md-4"></div>
+			
 			<div class="col-md-4"></div>
 		</div>
 

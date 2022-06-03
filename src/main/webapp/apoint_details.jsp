@@ -20,7 +20,9 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style type="text/css">
 body {
-	background: #85C1E9;
+	background-image:url("20356368.jpg");
+	background-repeat:no-repeat;
+	background-size:cover;
 }
 
 .container h1 {
@@ -55,7 +57,7 @@ body {
 					<tr>
 
 					</tr>
-					<tr bgcolor="#A52A2A">
+					<tr>
 						<td><b>PID</b></td>
 						<td><b>Patient Name</b></td>
 						<td><b>Doctor Name</b></td>
@@ -72,7 +74,7 @@ body {
 						resultSet = statement.executeQuery(sql);
 						while (resultSet.next()) {
 					%>
-					<tr bgcolor="#DEB887">
+					<tr>
 						<td><%=resultSet.getString("pId")%></td>
 						<td><%=resultSet.getString("pname")%></td>
 						<td><%=resultSet.getString("dname")%></td>
