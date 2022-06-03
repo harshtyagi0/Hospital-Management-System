@@ -70,12 +70,12 @@ input[type=submit] {
 			</tr>
 			<tr>
 				<th>Appointment Date :</th>
-				<td><input type="text" name=adate placeholder="2020/06/01">
+				<td><input type="date" name=adate placeholder="2020/06/01">
 				</td>
 			</tr>
 			<tr>
 				<th>Appointment Time :</th>
-				<td><input type="text" name=atime placeholder="10:00"></td>
+				<td><input type="time" name=atime placeholder="10:00"></td>
 			</tr>
 			
 			<tr>

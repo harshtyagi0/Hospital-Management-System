@@ -20,7 +20,7 @@ import com.crud.util.DatabaseUtil;
 @WebServlet("/dLogin")
 public class dLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	static String id;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -44,7 +44,7 @@ public class dLogin extends HttpServlet {
 		// TODO Auto-generated method stub
 		String name = request.getParameter("UserName");
 		String pwd = request.getParameter("pwd");
-		String sql ="SELECT password FROM doctor where name='"+name+"'";
+		String sql ="SELECT * FROM doctor where name='"+name+"'";
 		Connection con;
 		PreparedStatement st;
 		try {
@@ -57,10 +57,11 @@ public class dLogin extends HttpServlet {
 			String pwdd = null;
 			while (rs.next()) {
 				pwdd = rs.getString("password");
+				id= Integer.toString(rs.getInt("dId"));
 			}
 			if (pwd.equalsIgnoreCase(pwdd)) {
 				System.out.println("Login");
-				request.getRequestDispatcher("doctorPage.jsp").forward(request, response);
+				request.getRequestDispatcher("doctor_dash.jsp?dId="+id+"&name="+name+"").forward(request, response);
 			}
 
 			else {

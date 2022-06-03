@@ -61,10 +61,6 @@ public class appoint extends HttpServlet {
 			st.setString(2, request.getParameter("name"));
 			st.setString(3, request.getParameter("dname"));
 			st.setString(4, request.getParameter("specin"));
-//			SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
-////Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1); 
-//			String dateInString = request.getParameter("adate");
-//			Date date = formatter.parse(dateInString);
 			st.setString(5, request.getParameter("adate"));
 
 			st.setString(6, request.getParameter("atime"));
@@ -72,6 +68,11 @@ public class appoint extends HttpServlet {
 			int row = st.executeUpdate();
 			System.out.println(row + " row inserted");
 			
+			PrintWriter out = response.getWriter();
+			if(row>0) {
+				out.print("<html><body>");
+				out.print("<h1>Appointment Booked</h1></body></html>");
+			}
 
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

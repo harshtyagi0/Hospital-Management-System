@@ -48,7 +48,7 @@
 	<div class="container mx-auto ">
 		<h1>HopsDBMS|<br>Doc Login</h1>
 		<div class="mx-auto wd bg_color ">
-			<form action="dLogin" method="get">
+			<form action="dLogin" method="post">
 				<span class="font-weight-bold">User Name</span><br> 
 				<input type="text" class="form-control" id="inputUserName"
 					placeholder="UserName" name="UserName"><br> 

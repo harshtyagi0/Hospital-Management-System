@@ -91,7 +91,8 @@ body {
 					try {
 						connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
 						statement = connection.createStatement();
-						String sql = "SELECT * FROM patient";
+						int Pid = Integer.parseInt(request.getParameter("Pid"));
+						String sql = "SELECT * FROM patient where Pid='"+Pid+"'";
 						resultSet = statement.executeQuery(sql);
 						while (resultSet.next()) {
 					%>

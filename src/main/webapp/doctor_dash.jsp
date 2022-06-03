@@ -23,11 +23,11 @@ body {
 	background: #85C1E9;
 }
 
-.container h1 {
+.container-fluid h1 {
 	margin-top: 5vh;
 }
 
-.container h1, .footer {
+.container-fluid h1, .footer {
 	text-align: center;
 }
 
@@ -69,7 +69,7 @@ body {
 	Statement statement = null;
 	ResultSet resultSet = null;
 	%>
-	<div class="container">
+	<div class="container-fluid">
 		<h1>Doctor Dash</h1>
 		<div class="row">
 			<div class="col-md-4">
@@ -91,7 +91,8 @@ body {
 					try {
 						connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
 						statement = connection.createStatement();
-						String sql = "SELECT * FROM doctor";
+						int dId = Integer.parseInt(request.getParameter("dId"));
+						String sql = "SELECT * FROM doctor where dId='"+dId+"'";
 						resultSet = statement.executeQuery(sql);
 						while (resultSet.next()) {
 					%>
@@ -114,8 +115,48 @@ body {
 					%>
 				</table>
 			</div>
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<table align="center" cellpadding="5" cellspacing="5" border="1">
+					<tr>
+
+					</tr>
+					<tr bgcolor="#A52A2A">
+						<td><b>PID</b></td>
+						<td><b>Patient Name</b></td>
+						<td><b>Doctor Name</b></td>
+						<td><b>Specialization</b></td>
+						<td><b>Appointment Date</b></td>
+						<td><b>Appointment Time</b></td>
+					</tr>
+					<%
+					try {
+						connection = DriverManager.getConnection(connectionUrl + dbName, userId, password);
+						statement = connection.createStatement();
+						String name = request.getParameter("name");
+						String sql = "SELECT * FROM apn_info where dname='"+name+"'";
+						
+						resultSet = statement.executeQuery(sql);
+						while (resultSet.next()) {
+					%>
+					<tr bgcolor="#DEB887">
+						<td><%=resultSet.getString("pId")%></td>
+						<td><%=resultSet.getString("pname")%></td>
+						<td><%=resultSet.getString("dname")%></td>
+						<td><%=resultSet.getString("spec")%></td>
+						<td><%=resultSet.getString("apdate")%></td>
+						<td><%=resultSet.getString("aptime")%></td>
+					</tr>
+
+					<%
+					}
+					} catch (Exception e) {
+					e.printStackTrace();
+					}
+					%>
+				</table>
+			</div>
+			
 		</div>
 
 	</div>

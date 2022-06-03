@@ -26,6 +26,8 @@ import com.crud.util.DatabaseUtil;
 public class pLogin extends HttpServlet {
 	;
 	private static final long serialVersionUID = 1L;
+	
+	static String id;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -57,7 +59,7 @@ public class pLogin extends HttpServlet {
 
 		System.out.println("username: " + username);
 		System.out.println("password: " + password);
-		String sql ="SELECT password FROM patient where name='"+username+"'";
+		String sql ="SELECT * FROM patient where name='"+username+"'";
 		Connection con;
 		PreparedStatement st;
 		try {
@@ -66,14 +68,16 @@ public class pLogin extends HttpServlet {
 			st = con.prepareStatement(sql);
 			
 			ResultSet rs = st.executeQuery(sql);
+			
 		
 			String pwdd = null;
 			while (rs.next()) {
 				pwdd = rs.getString("password");
+				id= Integer.toString(rs.getInt("Pid"));
 			}
 			if (password.equalsIgnoreCase(pwdd)) {
 				System.out.println("Login");
-				request.getRequestDispatcher("patientPage.jsp").forward(request, response);
+				request.getRequestDispatcher("patientPage.jsp?Pid="+id+"").forward(request, response);
 			}
 
 			else {
